@@ -1932,3 +1932,112 @@ img, svg {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ==========================================================================
+   15. Full Responsive Device Optimization (Mobile, Tablet, Desktop)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  .os-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-pos-5, .grid-pos-6, .grid-pos-7, .grid-pos-8 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .os-arrow {
+    display: none;
+  }
+  .multilingual-3cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bank-section-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    padding: 8px 16px;
+  }
+  .nav-links, .nav-actions {
+    display: none;
+  }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+    gap: 16px;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  .hero {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 0.98rem;
+  }
+  .os-flow-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .multilingual-3cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid, .steps-grid, .features-grid, .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .floating-badge-1, .floating-badge-2 {
+    position: static;
+    margin-bottom: 10px;
+  }
+  .hero-widget-container {
+    padding: 0;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .btn-lg {
+    width: 100%;
+    padding: 14px 20px;
+  }
+  .hero-actions {
+    width: 100%;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+}
+
