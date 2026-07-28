@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "resolve-ai",
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/dashboard", "dest": "/dashboard.html" },
+    { "src": "/borrower", "dest": "/borrower.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
