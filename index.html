@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resolve AI — Autonomous Ethical Debt Resolution Platform</title>
+  <meta name="description" content="AI-powered multi-agent platform for ethical, empathetic, and highly efficient debt resolution between banks and borrowers.">
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome for crisp icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. Top Navigation Bar
+       ========================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-monogram">R</div>
+        <span>Resolve <span class="text-gradient">AI</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#agent-pipeline" class="nav-link">Agent Pipeline</a></li>
+        <li><a href="#for-banks" class="nav-link">For Banks</a></li>
+        <li><a href="#for-borrowers" class="nav-link">For Borrowers</a></li>
+        <li><a href="#multilingual" class="nav-link">Multilingual</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="dashboard.html" class="portal-link">
+          <i class="fa-solid fa-building-columns"></i> Bank Dashboard
+        </a>
+        <a href="borrower.html" class="portal-link">
+          <i class="fa-solid fa-user-shield"></i> Borrower Portal
+        </a>
+        <button class="btn btn-primary btn-sm open-demo-modal">
+          <i class="fa-solid fa-calendar-check"></i> Book Demo
+        </button>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       2. Hero Section
+       ========================================================================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="badge badge-primary badge-glow hero-badge">
+            <i class="fa-solid fa-sparkles"></i> Next-Gen Autonomous Debt Recovery
+          </div>
+          <h1 class="hero-title">
+            Resolving Debt. <br>
+            <span class="text-gradient">Restoring Lives.</span>
+          </h1>
+          <p class="hero-subtitle">
+            An autonomous multi-agent platform that ethically resolves debt — tailored for banks requiring optimal recovery rates and borrowers deserving dignity & flexible settlement options.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg open-demo-modal">
+              <i class="fa-solid fa-rocket"></i> Book Live Demo
+            </button>
+            <a href="#how-it-works" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-circle-play"></i> See How It Works
+            </a>
+          </div>
+
+          <div class="hero-trust-proof">
+            <div class="trust-avatars">
+              <div class="trust-avatar">HDFC</div>
+              <div class="trust-avatar">SBI</div>
+              <div class="trust-avatar">ICICI</div>
+              <div class="trust-avatar">+</div>
+            </div>
+            <div class="trust-text">
+              Trusted for <span>₹500Cr+</span> in simulated retail loan portfolios across India.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Demo Widget -->
+        <div class="hero-widget-container" id="hero-interactive-demo">
+          <!-- Floating Badges for visual flair -->
+          <div class="floating-badge floating-badge-1">
+            <div class="badge-icon-circle">
+              <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">RBI Compliance</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-heading);">100% FLDG Certified</div>
+            </div>
+          </div>
+
+          <div class="floating-badge floating-badge-2">
+            <div class="badge-icon-circle" style="background: rgba(91, 70, 232, 0.1); color: var(--primary);">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Voice & Chat Agent</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-heading);">Active in 22 Languages</div>
+            </div>
+          </div>
+
+          <div class="hero-widget">
+            <div class="widget-header">
+              <div class="widget-title">
+                <div class="status-dot"></div>
+                <span>Master Agent Monitor — Live Dialogue</span>
+              </div>
+              <span class="badge badge-success" style="font-size: 0.7rem; padding: 2px 8px;">Agent #2 (Voice)</span>
+            </div>
+
+            <div class="widget-body" id="hero-chat-stream">
+              <div class="chat-bubble agent">
+                Namaste Rahul ji. I am Resolve AI calling on behalf of Apex Bank. We noticed an outstanding EMI of ₹14,200. We understand times can be tough — would you like to structure a customized 3-month relief plan?
+                <div class="chat-meta">
+                  <i class="fa-solid fa-robot"></i> Voice AI • Hindi/English Hybrid • 10:42 AM
+                </div>
+              </div>
+
+              <div class="chat-bubble borrower">
+                Yes, I lost my job last month. Can I pay ₹5,000 this month and split the remaining balance?
+                <div class="chat-meta">
+                  <i class="fa-solid fa-user"></i> Borrower • 10:43 AM
+                </div>
+              </div>
+
+              <div class="chat-bubble agent">
+                Absolutely. I have logged your request. I can immediately approve a 40% EMI reduction for 60 days with 0 penalty fees under RBI hardship guidelines. Would you like me to issue the updated payment link via WhatsApp?
+                <div class="chat-meta">
+                  <i class="fa-solid fa-shield-halved"></i> Master Agent Approved • 10:43 AM
+                </div>
+              </div>
+            </div>
+
+            <div class="widget-footer">
+              <div class="typing-indicator">
+                <span style="font-weight: 600; color: var(--primary);">Agent 1 (WhatsApp)</span> is drafting response
+                <div class="typing-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">
+                <i class="fa-solid fa-lock"></i> 256-bit Encrypted
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. Stats Bar Section
+       ========================================================================== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">₹500Cr+</div>
+          <div class="stat-label">Debt Managed</div>
+          <span class="projected-tag">* Projected / Demo Figures</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Resolution Rate</div>
+          <span class="projected-tag">* Projected / Demo Figures</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10,000+</div>
+          <div class="stat-label">Borrowers Helped</div>
+          <span class="projected-tag">* Projected / Demo Figures</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3x</div>
+          <div class="stat-label">Faster Recovery</div>
+          <span class="projected-tag">* Projected / Demo Figures</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. How It Works (3 Steps)
+       ========================================================================== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Simple & Seamless</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">How Resolve AI Operates in <span class="text-gradient">3 Easy Steps</span></h2>
+        <p class="section-subtitle">Transforming traditional high-friction collection calls into empathetic, automated resolution pipelines.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Upload Defaulter List</h3>
+          <p class="step-desc">
+            Banks securely upload non-performing asset (NPA) or overdue portfolios via CSV, Excel, or direct API integration.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3 class="step-title">AI Multi-Channel Reachout</h3>
+          <p class="step-desc">
+            Autonomous Voice & Chat agents initiate personalized conversations via WhatsApp, Interactive Voice Calls, Email, and SMS in 22 regional Indian languages.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Continuous Strategy Optimization</h3>
+          <p class="step-desc">
+            Master Agent oversees sub-agent performance, dynamically reallocates negotiation strategies, and tracks real-time EMI collections.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. Master & Sub-Agent Architecture Section (Flowchart)
+       ========================================================================== -->
+  <section class="section" id="agent-pipeline" style="background: rgba(91, 70, 232, 0.02);">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Multi-Agent System Architecture</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">The Autonomous <span class="text-gradient">Master & Sub-Agent Network</span></h2>
+        <p class="section-subtitle">A self-monitoring agentic mesh where specialized AI agents handle multi-channel conversations under centralized compliance oversight.</p>
+      </div>
+
+      <div class="flowchart-container">
+        <!-- Master Agent Node at top -->
+        <div class="master-agent-node">
+          <div class="badge badge-primary" style="margin-bottom: 8px;">Central Overseer</div>
+          <h3><i class="fa-solid fa-brain"></i> Master Agent Oversight Engine</h3>
+          <p style="font-size: 0.85rem; color: var(--text-body); margin-top: 6px;">
+            Continuously monitors tone compliance, RBI guidelines, sub-agent latency, and auto-corrects negotiation pathways.
+          </p>
+          <div class="master-repair-badge">
+            <i class="fa-solid fa-circle-check"></i> Self-Healing & Live Regulatory Audit Active
+          </div>
+        </div>
+
+        <div class="flow-connector-line"></div>
+
+        <!-- Sub-Agents Grid -->
+        <div class="subagents-grid">
+
+          <!-- Sub-Agent 1 -->
+          <div class="subagent-card">
+            <div class="agent-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h4 class="agent-name">Agent 1: Chat AI</h4>
+            <p class="agent-desc">Handles WhatsApp, SMS & Email text interactions with instant automated EMI settlement links.</p>
+            <div class="agent-stats">
+              <span class="agent-status-pill" style="color: var(--success);"><i class="fa-solid fa-circle"></i> Active</span>
+              <span>4,120 Conversations</span>
+            </div>
+          </div>
+
+          <!-- Sub-Agent 2 -->
+          <div class="subagent-card">
+            <div class="agent-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <h4 class="agent-name">Agent 2: Voice AI</h4>
+            <p class="agent-desc">Empathetic voice calls in 22 Indian regional dialects with real-time intent recognition.</p>
+            <div class="agent-stats">
+              <span class="agent-status-pill" style="color: var(--success);"><i class="fa-solid fa-circle"></i> Active</span>
+              <span>3,850 Calls Handled</span>
+            </div>
+          </div>
+
+          <!-- Sub-Agent 3 -->
+          <div class="subagent-card">
+            <div class="agent-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h4 class="agent-name">Agent 3: Legal & Regulatory</h4>
+            <p class="agent-desc">Enforces RBI FLDG, SARFAESI, and IBC legal compliance guidelines during negotiations.</p>
+            <div class="agent-stats">
+              <span class="agent-status-pill" style="color: var(--success);"><i class="fa-solid fa-circle"></i> Auditing</span>
+              <span>100% Compliant</span>
+            </div>
+          </div>
+
+          <!-- Sub-Agent 4 -->
+          <div class="subagent-card">
+            <div class="agent-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h4 class="agent-name">Agent 4: Human Escalation</h4>
+            <p class="agent-desc">Seamlessly transfers complex hardship cases or disputes to human bank officers.</p>
+            <div class="agent-stats">
+              <span class="agent-status-pill" style="color: var(--warning);"><i class="fa-solid fa-circle"></i> Standby</span>
+              <span>2.4% Escalation Rate</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Features Grid Section
+       ========================================================================== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Comprehensive Platform Features</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">Why Financial Institutions Choose <span class="text-gradient">Resolve AI</span></h2>
+        <p class="section-subtitle">Built from the ground up for ethical recovery, compliance, and unmatched efficiency.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h3 class="feature-title">Smart Portfolio Segmentation</h3>
+          <p class="feature-desc">Algorithms automatically categorize borrowers by risk grade, payment history, and willingness to pay for targeted workflows.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-language"></i>
+          </div>
+          <h3 class="feature-title">22 Indian Languages</h3>
+          <p class="feature-desc">Native multi-accent fluency in Hindi, Tamil, Telugu, Marathi, Bengali, Gujarati, Kannada, Malayalam, and 14 other official languages.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-arrows-spin"></i>
+          </div>
+          <h3 class="feature-title">Zero Repeated Questions</h3>
+          <p class="feature-desc">Unified memory state across WhatsApp, Voice, and Email ensures borrowers never have to repeat their context.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <h3 class="feature-title">Ethical & Empathetic Tone</h3>
+          <p class="feature-desc">No harassment or aggressive tactics. Strictly enforces respectful language and stress-reduction protocols.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-shield-virus"></i>
+          </div>
+          <h3 class="feature-title">Master Agent Self-Healing</h3>
+          <p class="feature-desc">If a sub-agent encounters an unexpected response, the Master Agent intervenes in milliseconds with corrective prompts.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-chart-line-up"></i>
+          </div>
+          <h3 class="feature-title">Real-Time Recovery Analytics</h3>
+          <p class="feature-desc">Live performance dashboards displaying settlement velocity, projected cashflow, and channel efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. For Banks Section (Upload, ROI Calculator, Charts)
+       ========================================================================== -->
+  <section class="section" id="for-banks" style="background: var(--bg-main);">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Lender & Bank Portal</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">Empowering Banks with <span class="text-gradient">High-Speed Recovery</span></h2>
+        <p class="section-subtitle">Simulate portfolio upload and estimate your recovery ROI in real time.</p>
+      </div>
+
+      <div class="bank-section-grid">
+        <!-- Bank Upload Zone Simulation -->
+        <div class="card">
+          <h3 style="font-size: 1.3rem; margin-bottom: 16px;"><i class="fa-solid fa-cloud-arrow-up text-gradient"></i> Defaulter Portfolio Drag & Drop</h3>
+          <p style="font-size: 0.88rem; color: var(--text-body); margin-bottom: 20px;">
+            Simulate uploading your NPA list (.csv, .xlsx, or JSON) to launch automated AI campaigns.
+          </p>
+
+          <div class="upload-zone" id="bank-upload-dropzone">
+            <div class="upload-icon">
+              <i class="fa-solid fa-file-excel"></i>
+            </div>
+            <h4 style="font-size: 1rem; color: var(--text-heading); margin-bottom: 6px;">Drag & Drop Defaulter File Here</h4>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">Supports CSV, Excel (.xlsx), or JSON format</p>
+            <button class="btn btn-secondary btn-sm" id="btn-browse-file">
+              <i class="fa-solid fa-folder-open"></i> Browse Files
+            </button>
+            <input type="file" id="file-input-hidden" style="display: none;" accept=".csv,.xlsx,.json">
+          </div>
+
+          <div id="upload-file-status" style="margin-top: 16px; font-size: 0.85rem; color: var(--success); display: none;">
+            <i class="fa-solid fa-circle-check"></i> File loaded: <strong>Sample_NPA_Portfolio_2026.xlsx</strong> (1,250 Borrowers)
+          </div>
+        </div>
+
+        <!-- ROI & Recovery Calculator -->
+        <div class="roi-calculator-card">
+          <h3 style="font-size: 1.3rem; margin-bottom: 20px;"><i class="fa-solid fa-calculator text-gradient"></i> Recovery ROI Calculator</h3>
+          
+          <div class="calc-group">
+            <div class="calc-label">
+              <span>Total Overdue Portfolio (₹)</span>
+              <strong id="val-portfolio-size">₹ 10,00,00,000</strong>
+            </div>
+            <input type="range" class="calc-slider" id="input-portfolio-size" min="1000000" max="100000000" step="1000000" value="10000000">
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label">
+              <span>Current Recovery Rate (%)</span>
+              <strong id="val-current-rate">25%</strong>
+            </div>
+            <input type="range" class="calc-slider" id="input-current-rate" min="5" max="50" step="1" value="25">
+          </div>
+
+          <div class="calc-result-box">
+            <div>
+              <div style="font-size: 0.8rem; opacity: 0.8;">Projected Recovery with Resolve AI</div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #50E3C2;" id="res-projected-amount">₹ 7,50,00,000</div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-success" style="font-size: 0.8rem;" id="res-roi-multiplier">3.0x Recovery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Before vs After Resolve AI Chart Container -->
+      <div class="chart-container-box">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <div>
+            <h4 style="font-size: 1.1rem;">Recovery Velocity Comparison</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">Traditional Collection Agencies vs Autonomous Resolve AI Agents</p>
+          </div>
+          <div style="display: flex; gap: 16px; font-size: 0.85rem; font-weight: 600;">
+            <span style="color: var(--text-muted);"><i class="fa-solid fa-square" style="color: #CBD5E1;"></i> Traditional (Manual)</span>
+            <span style="color: var(--primary);"><i class="fa-solid fa-square" style="color: var(--primary);"></i> Resolve AI (Autonomous)</span>
+          </div>
+        </div>
+
+        <div style="height: 220px; width: 100%; position: relative;">
+          <canvas id="recovery-chart"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. For Borrowers Section (Regulatory Compliance & Support)
+       ========================================================================== -->
+  <section class="section" id="for-borrowers">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Borrower Protection & Dignity</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">Rebuilding Financial Health with <span class="text-gradient">Empathy & Rights</span></h2>
+        <p class="section-subtitle">Debt happens. Resolution should empower you, not intimidate you.</p>
+      </div>
+
+      <div class="borrower-cards-grid">
+        <div class="borrower-reg-card">
+          <span class="reg-badge">RBI Guidelines</span>
+          <h4 style="font-size: 1.05rem; margin-bottom: 8px;">Fair Debt Collection</h4>
+          <p style="font-size: 0.85rem; color: var(--text-body);">Zero calls before 8 AM or after 7 PM. Transparent EMI breakup without hidden collection fees.</p>
+        </div>
+
+        <div class="borrower-reg-card">
+          <span class="reg-badge">SARFAESI Protection</span>
+          <h4 style="font-size: 1.05rem; margin-bottom: 8px;">Legal Notice Assistance</h4>
+          <p style="font-size: 0.85rem; color: var(--text-body);">Clear digital breakdowns of formal notices with 60-day cure windows explained simply.</p>
+        </div>
+
+        <div class="borrower-reg-card">
+          <span class="reg-badge">IBC Code</span>
+          <h4 style="font-size: 1.05rem; margin-bottom: 8px;">One-Time Settlement (OTS)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-body);">Instant AI evaluation for partial waivers and custom installment plans under Insolvency laws.</p>
+        </div>
+
+        <div class="borrower-reg-card">
+          <span class="reg-badge">CIBIL Score</span>
+          <h4 style="font-size: 1.05rem; margin-bottom: 8px;">Credit Score Restoration</h4>
+          <p style="font-size: 0.85rem; color: var(--text-body);">Upon repayment completion, Resolve AI automatically triggers CIBIL update requests to boost your score.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. Multilingual Support Section
+       ========================================================================== -->
+  <section class="section" id="multilingual" style="background: rgba(91, 70, 232, 0.02);">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">22 Scheduled Indian Languages</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">Speaking Your Language, <span class="text-gradient">Every Time</span></h2>
+        <p class="section-subtitle">Experience live voice preview samples in 22 official languages of India.</p>
+      </div>
+
+      <div class="multilingual-box">
+        <div class="lang-selector-wrapper">
+          <label class="form-label" style="text-align: center; margin-bottom: 10px;">Select Language Preview:</label>
+          <select class="lang-select" id="language-selector">
+            <option value="hi" selected>Hindi (हिन्दी)</option>
+            <option value="bn">Bengali (বাংলা)</option>
+            <option value="mr">Marathi (मराठी)</option>
+            <option value="te">Telugu (తెలుగు)</option>
+            <option value="ta">Tamil (தமிழ்)</option>
+            <option value="gu">Gujarati (ગુજરાતી)</option>
+            <option value="ur">Urdu (اُردُو)</option>
+            <option value="kn">Kannada (ಕನ್ನಡ)</option>
+            <option value="or">Odia (ଓଡ଼ିଆ)</option>
+            <option value="ml">Malayalam (മലയാളം)</option>
+            <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+            <option value="as">Assamese (অসমীয়া)</option>
+            <option value="mai">Maithili (मैथिली)</option>
+            <option value="mni">Meitei / Manipuri (মৈতৈলোন্)</option>
+            <option value="sat">Santali (ᱥᱟᱱᱛᱟᱲᱤ)</option>
+            <option value="ks">Kashmiri (कॉशुर)</option>
+            <option value="ne">Nepali (नेपाली)</option>
+            <option value="kok">Konkani (कोंकणी)</option>
+            <option value="doi">Dogri (डोगरी)</option>
+            <option value="brx">Bodo (बर')</option>
+            <option value="sd">Sindhi (سنڌي)</option>
+            <option value="sa">Sanskrit (संस्कृतम्)</option>
+          </select>
+        </div>
+
+        <div class="sample-audio-grid">
+          <div class="audio-preview-card">
+            <div class="audio-player-row">
+              <button class="play-btn" aria-label="Play Sample 1"><i class="fa-solid fa-play"></i></button>
+              <div class="waveform-bar-sim">
+                <span style="height: 40%;"></span><span style="height: 80%;"></span><span style="height: 60%;"></span>
+                <span style="height: 100%;"></span><span style="height: 50%;"></span><span style="height: 70%;"></span>
+              </div>
+            </div>
+            <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-heading);">EMI Delay Inquiry</div>
+            <div style="font-size: 0.78rem; color: var(--text-body);" id="audio-script-1">
+              "नमस्ते, क्या हम आपकी अगली ईएमआई के लिए एक आसान किस्त योजना बना सकते हैं?"
+            </div>
+          </div>
+
+          <div class="audio-preview-card">
+            <div class="audio-player-row">
+              <button class="play-btn" aria-label="Play Sample 2"><i class="fa-solid fa-play"></i></button>
+              <div class="waveform-bar-sim">
+                <span style="height: 70%;"></span><span style="height: 30%;"></span><span style="height: 90%;"></span>
+                <span style="height: 50%;"></span><span style="height: 80%;"></span><span style="height: 40%;"></span>
+              </div>
+            </div>
+            <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-heading);">Waiver Confirmation</div>
+            <div style="font-size: 0.78rem; color: var(--text-body);" id="audio-script-2">
+              "आपकी छूट अनुरोध को बैंक द्वारा स्वीकृति मिल गई है।"
+            </div>
+          </div>
+
+          <div class="audio-preview-card">
+            <div class="audio-player-row">
+              <button class="play-btn" aria-label="Play Sample 3"><i class="fa-solid fa-play"></i></button>
+              <div class="waveform-bar-sim">
+                <span style="height: 50%;"></span><span style="height: 90%;"></span><span style="height: 40%;"></span>
+                <span style="height: 70%;"></span><span style="height: 60%;"></span><span style="height: 80%;"></span>
+              </div>
+            </div>
+            <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-heading);">CIBIL NOC Dispatch</div>
+            <div style="font-size: 0.78rem; color: var(--text-body);" id="audio-script-3">
+              "भुगतान प्राप्त हुआ। आपका एनओसी सर्टिफिकेट व्हाट्सएप पर भेज दिया गया है।"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. Testimonials & Social Proof
+       ========================================================================== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Impact Stories</div>
+        <h2 style="font-size: 2.4rem; margin-top: 10px;">Trusted by Risk Officers & <span class="text-gradient">Borrowers</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "Resolve AI reduced our NPA recovery cycle from 90 days to just 14 days. The multi-agent coordination across WhatsApp and Voice calls is unmatched."
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">RK</div>
+            <div>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-heading);">Rajesh Kumar</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Head of Retail Collections, Apex Bank</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "I was terrified of recovery agent calls after losing my shop. Resolve AI listened in Tamil, offered me a 3-month EMI split, and saved my credit score."
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar" style="background: var(--accent-purple);">S</div>
+            <div>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-heading);">Suresh V.</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Small Business Owner, Chennai</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "The RBI FLDG compliance audit feature in Agent 3 gave our legal team complete peace of mind. Zero harassment risks and 3.2x higher recovery."
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar" style="background: var(--primary-dark);">PS</div>
+            <div>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-heading);">Priya Sharma</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Chief Risk Officer, FinTech Capital</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       11. Book Demo Modal Popup (#demo-modal)
+       ========================================================================== -->
+  <div class="modal-overlay" id="demo-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div class="brand-monogram" style="margin: 0 auto 12px auto;">R</div>
+        <h3 style="font-size: 1.4rem;">Book a Live Resolve AI Demo</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Experience our multi-agent autonomous debt resolution engine with your portfolio sample.</p>
+      </div>
+
+      <form id="demo-form">
+        <div class="form-group">
+          <label class="form-label" for="demo-name">Full Name</label>
+          <input type="text" id="demo-name" class="form-control" placeholder="e.g. Vikramaditya Singh" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demo-email">Work Email</label>
+          <input type="email" id="demo-email" class="form-control" placeholder="vikram@bank.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demo-company">Bank / Institution Name</label>
+          <input type="text" id="demo-company" class="form-control" placeholder="e.g. HDFC Bank / Capital Finance" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demo-portfolio">Estimated NPA Portfolio Size</label>
+          <select id="demo-portfolio" class="form-control">
+            <option value="<10Cr">Under ₹10 Crore</option>
+            <option value="10-50Cr">₹10 Cr – ₹50 Cr</option>
+            <option value="50-200Cr">₹50 Cr – ₹200 Cr</option>
+            <option value=">200Cr">Above ₹200 Crore</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          <i class="fa-solid fa-paper-plane"></i> Schedule Interactive Demo
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       12. Footer
+       ========================================================================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="color: #FFFFFF;">
+            <div class="brand-monogram">R</div>
+            <span>Resolve AI</span>
+          </div>
+          <p>
+            Autonomous multi-agent platform transforming debt recovery into an ethical, empathetic, and highly effective digital experience.
+          </p>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-purple); margin-top: 12px;">
+            "Resolve. Recover. Restore."
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#agent-pipeline">Agent Architecture</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#multilingual">22 Languages</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Portals</h4>
+          <ul class="footer-links">
+            <li><a href="dashboard.html"><i class="fa-solid fa-building-columns"></i> Bank Dashboard</a></li>
+            <li><a href="borrower.html"><i class="fa-solid fa-user-shield"></i> Borrower Portal</a></li>
+            <li><a href="#for-banks">ROI Calculator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Compliance</h4>
+          <ul class="footer-links">
+            <li><a href="#for-borrowers">RBI FLDG Framework</a></li>
+            <li><a href="#for-borrowers">SARFAESI Act</a></li>
+            <li><a href="#for-borrowers">IBC Recovery Code</a></li>
+            <li><a href="#for-borrowers">CIBIL Restoration</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Resolve AI Platform. All rights reserved.</div>
+        <div>* Demo / Pitch product simulation data. Built for bank evaluation.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include Chart.js for smooth canvas graph rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Main landing page interactive JS script -->
+  <script src="main.js"></script>
+</body>
+</html>

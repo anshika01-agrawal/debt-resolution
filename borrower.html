@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borrower Assistance Portal — Resolve AI</title>
+  <meta name="description" content="Empathetic, confidential, and ethical debt resolution portal for borrowers. Calculate flexible EMIs, access hardship waivers, and obtain instant digital NOC.">
+  
+  <!-- Base & Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="borrower.css">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & Outfit & Script font for signature -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti for Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="borrower-portal-body">
+
+  <!-- ==========================================================================
+       1. Top Borrower Navigation Bar
+       ========================================================================== -->
+  <header class="borrower-navbar">
+    <div class="borrower-container borrower-nav-inner">
+      <div class="borrower-nav-left">
+        <a href="index.html" class="borrower-brand">
+          <div class="borrower-brand-icon">R</div>
+          <span>Resolve <span style="color: var(--borrower-primary);">AI</span></span>
+        </a>
+        <span class="borrower-portal-badge">
+          <i class="fa-solid fa-user-shield"></i> Borrower Assistance Portal
+        </span>
+      </div>
+
+      <div class="borrower-nav-right">
+        <div class="support-helpline-badge" title="Toll-free 24/7 Borrower Support Line">
+          <i class="fa-solid fa-phone-volume"></i>
+          <span>Support Helpline: <strong>1800-RESOLVE (1800-737-6583)</strong></span>
+        </div>
+
+        <a href="index.html" class="btn-nav-landing">
+          <i class="fa-solid fa-house"></i> Home Page
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. Hero Greeting Banner & Account Summary Header
+       ========================================================================== -->
+  <section class="borrower-hero-banner">
+    <div class="borrower-container">
+      <div class="hero-welcome-text">
+        <h1>
+          Welcome back, Rajesh Sharma <span class="wave-hand">👋</span>
+        </h1>
+        <p>
+          Let's resolve your loan with dignity, confidentiality & complete peace of mind. We work directly with HDFC Bank to provide flexible EMIs, hardship waivers, and zero harassment.
+        </p>
+        <div class="guarantee-pill">
+          <i class="fa-solid fa-shield-halved"></i> 100% Confidential & RBI Fair Practice Code Compliant
+        </div>
+      </div>
+
+      <!-- Quick Account Stats Bar -->
+      <div class="account-summary-grid">
+        <div class="account-card-item">
+          <div class="account-card-icon indigo">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+          <div class="account-card-info">
+            <label>Loan Account No.</label>
+            <div class="val">LA-894102</div>
+          </div>
+        </div>
+
+        <div class="account-card-item">
+          <div class="account-card-icon teal">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <div class="account-card-info">
+            <label>Lender Bank</label>
+            <div class="val">HDFC Bank</div>
+          </div>
+        </div>
+
+        <div class="account-card-item">
+          <div class="account-card-icon amber">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+          </div>
+          <div class="account-card-info">
+            <label>Total Outstanding Due</label>
+            <div class="val">₹45,000</div>
+          </div>
+        </div>
+
+        <div class="account-card-item">
+          <div class="account-card-icon green">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <div class="account-card-info">
+            <label>Current Status</label>
+            <div class="val">
+              <span class="status-badge-pulsing">
+                <span class="pulse-dot"></span> In Flexible Negotiation
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. Visual Debt Resolution Progress Bar Tracker (#borrower-tracker)
+       ========================================================================== -->
+  <main class="borrower-container">
+    <div class="borrower-tracker-card" id="borrower-tracker">
+      <div class="tracker-header">
+        <div class="tracker-title">
+          <i class="fa-solid fa-route" style="color: var(--borrower-primary);"></i>
+          <span>Your Debt-Free Journey Progress</span>
+        </div>
+        <span class="tracker-subtitle" id="tracker-current-status-text">Step 2: AI Assessment Active</span>
+      </div>
+
+      <div class="tracker-steps-wrapper">
+        <div class="tracker-progress-line-bg"></div>
+        <div class="tracker-progress-line-fill" id="tracker-progress-bar" style="width: 35%;"></div>
+
+        <!-- Step 1 -->
+        <div class="tracker-step completed" id="step-1">
+          <div class="step-icon-circle">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="step-label-title">1. Account Identified</div>
+          <div class="step-label-desc">HDFC Personal Loan</div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="tracker-step active" id="step-2">
+          <div class="step-icon-circle">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="step-label-title">2. AI Assessment</div>
+          <div class="step-label-desc">Evaluating Hardship</div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="tracker-step pending" id="step-3">
+          <div class="step-icon-circle">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <div class="step-label-title">3. Agreement</div>
+          <div class="step-label-desc">Lock Repayment Plan</div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="tracker-step pending" id="step-4">
+          <div class="step-icon-circle">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="step-label-title">4. Debt Free NOC</div>
+          <div class="step-label-desc">Download Certificate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         4. Main 2-Column Interactive Layout
+         ========================================================================== -->
+    <div class="borrower-grid">
+
+      <!-- LEFT COLUMN: Interactive AI Debt Assistant Chat Widget (#borrower-chat-widget) -->
+      <div class="chat-column">
+        <div class="chat-card" id="borrower-chat-widget">
+          
+          <!-- Chat Header -->
+          <div class="chat-header">
+            <div class="chat-agent-info">
+              <div class="agent-avatar-wrap">
+                <div class="agent-avatar">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <span class="online-indicator" title="Asha AI is online"></span>
+              </div>
+              <div class="agent-details">
+                <h3>Asha — AI Resolution Advisor <i class="fa-solid fa-circle-check" style="color: #2DD4BF; font-size: 0.85rem;" title="Verified Bank Advisor"></i></h3>
+                <p>Empathetic Hardship Assistant • Speaks Hindi & English</p>
+              </div>
+            </div>
+
+            <div class="chat-controls">
+              <button class="chat-action-btn" id="speech-toggle-btn" title="Toggle AI Voice Speech Response">
+                <i class="fa-solid fa-volume-high"></i>
+                <span id="speech-btn-label">Voice ON</span>
+              </button>
+              <button class="chat-action-btn" id="reset-chat-btn" title="Reset Conversation">
+                <i class="fa-solid fa-rotate-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Message History Container -->
+          <div class="chat-messages-container" id="chat-messages">
+            
+            <!-- Message 1 (Bot Initial Greeting) -->
+            <div class="msg-group bot">
+              <div class="msg-avatar">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="msg-content">
+                <div class="msg-bubble">
+                  Namaste Rajesh ji 🙏. I am Asha, your confidential resolution advisor for HDFC Bank Account <strong>#LA-894102</strong> (Total Due: ₹45,000).
+                  <br><br>
+                  I understand that financial stress happens to everyone. My job is to help you find an easy, affordable repayment plan that fits your current budget—with <strong>zero harassment</strong> and instant legal relief. How can I assist you today?
+                </div>
+                <span class="msg-timestamp">10:14 AM</span>
+              </div>
+            </div>
+
+            <!-- Message 2 (User Sample Query) -->
+            <div class="msg-group user">
+              <div class="msg-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="msg-content">
+                <div class="msg-bubble">
+                  I lost my job last month and cannot pay ₹45,000 at once. Will recovery agents call my family?
+                </div>
+                <span class="msg-timestamp">10:15 AM</span>
+              </div>
+            </div>
+
+            <!-- Message 3 (Bot Empathetic Response with Hardship Offer) -->
+            <div class="msg-group bot">
+              <div class="msg-avatar">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="msg-content">
+                <div class="msg-bubble">
+                  I am deeply sorry to hear about your job loss, Rajesh ji. Please take a deep breath: <strong>Resolve AI guarantees 100% protection from agent harassment</strong> under the RBI Fair Practice Code.
+                  <br><br>
+                  Because of your temporary hardship, our system has automatically unlocked a <strong>₹5,000 Special Waiver Discount</strong>, reducing your total balance to <strong>₹40,000</strong>.
+                  
+                  <div class="chat-offer-box">
+                    <h4><i class="fa-solid fa-gift"></i> Recommended Hardship Plan</h4>
+                    <ul>
+                      <li>Original Balance: ₹45,000 → <strong>Agreed Amount: ₹40,000</strong></li>
+                      <li>Monthly EMI: <strong>₹6,667 / month</strong> for 6 months (or ₹3,333 for 12 months)</li>
+                      <li>0% Interest Penalties & Instant CIBIL Recovery</li>
+                    </ul>
+                    <button class="btn-chat-accept" onclick="window.selectChatPlan(6, 40000)">
+                      <i class="fa-solid fa-check-circle"></i> Accept This ₹6,667/mo Plan Now
+                    </button>
+                  </div>
+                </div>
+                <span class="msg-timestamp">10:16 AM</span>
+              </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typing-indicator">
+              <div class="msg-avatar">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="typing-bubble">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Reply Prompt Chips -->
+          <div class="quick-chips-bar" id="quick-chips">
+            <button class="chip-btn" data-prompt="I lost my job recently">
+              <i class="fa-solid fa-briefcase"></i> I lost my job
+            </button>
+            <button class="chip-btn" data-prompt="Show me ₹5,000/month plan">
+              <i class="fa-solid fa-calculator"></i> ₹5,000/mo Plan
+            </button>
+            <button class="chip-btn" data-prompt="What about my CIBIL score?">
+              <i class="fa-solid fa-chart-line"></i> CIBIL Score Impact
+            </button>
+            <button class="chip-btn" data-prompt="Talk to Human Advisor">
+              <i class="fa-solid fa-headset"></i> Human Bank Manager
+            </button>
+            <button class="chip-btn" data-prompt="What are my RBI rights?">
+              <i class="fa-solid fa-scale-balanced"></i> RBI Rights
+            </button>
+          </div>
+
+          <!-- Chat Input Form -->
+          <div class="chat-input-wrapper">
+            <form class="chat-form" id="chat-form">
+              <input type="text" id="chat-input" class="chat-input-box" placeholder="Ask Asha about EMIs, waivers, or legal rights..." autocomplete="off">
+              
+              <button type="button" class="btn-mic-voice" id="mic-btn" title="Speak to Asha (Voice Input)">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+
+              <button type="submit" class="btn-send-chat" id="send-btn" title="Send Message">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Interactive Repayment Calculator & Rights Cards -->
+      <div class="right-column-stack">
+        
+        <!-- Interactive Repayment & EMI Calculator Card (#repayment-calc-card) -->
+        <div class="calc-card" id="repayment-calc-card">
+          <div class="calc-card-header">
+            <div class="calc-title">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Repayment & Hardship Calculator</span>
+            </div>
+            <span class="hardship-tag"><i class="fa-solid fa-tag"></i> Hardship Active</span>
+          </div>
+
+          <!-- Income Slider -->
+          <div class="slider-group">
+            <div class="slider-label-row">
+              <label for="income-range"><i class="fa-solid fa-wallet" style="color: var(--borrower-primary);"></i> Household Monthly Income</label>
+              <span class="slider-val-badge" id="income-val">₹45,000</span>
+            </div>
+            <input type="range" id="income-range" class="custom-range-slider" min="10000" max="200000" step="2000" value="45000">
+          </div>
+
+          <!-- Expense Slider -->
+          <div class="slider-group">
+            <div class="slider-label-row">
+              <label for="expense-range"><i class="fa-solid fa-basket-shopping" style="color: #E11D48;"></i> Essential Monthly Expenses</label>
+              <span class="slider-val-badge" id="expense-val" style="background: #FFE4E6; color: #E11D48;">₹25,000</span>
+            </div>
+            <input type="range" id="expense-range" class="custom-range-slider" min="5000" max="150000" step="1000" value="25000">
+          </div>
+
+          <!-- Tenure Selection Buttons -->
+          <div class="tenure-selector-wrap">
+            <label><i class="fa-solid fa-calendar-days" style="color: var(--accent-teal);"></i> Select Repayment Tenure</label>
+            <div class="tenure-buttons-grid">
+              <button type="button" class="tenure-btn" data-tenure="3">
+                <span class="num">3</span>
+                <span class="unit">Months</span>
+              </button>
+              <button type="button" class="tenure-btn active" data-tenure="6">
+                <span class="num">6</span>
+                <span class="unit">Months</span>
+                <span class="rec-badge-small">Best</span>
+              </button>
+              <button type="button" class="tenure-btn" data-tenure="9">
+                <span class="num">9</span>
+                <span class="unit">Months</span>
+              </button>
+              <button type="button" class="tenure-btn" data-tenure="12">
+                <span class="num">12</span>
+                <span class="unit">Months</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- EMI Summary Output Box -->
+          <div class="emi-summary-box">
+            <div class="summary-row">
+              <span class="label">Original Outstanding Balance:</span>
+              <span class="val">₹45,000</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="label">Net Disposable Income:</span>
+              <span class="val" id="calc-disposable">₹20,000 / mo</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="label" style="color: #059669;">Special AI Hardship Waiver:</span>
+              <span class="val" id="calc-waiver" style="color: #059669;">- ₹5,000 (11.1% Off)</span>
+            </div>
+
+            <div class="summary-row highlight">
+              <span class="label">Recommended EMI:</span>
+              <span class="val" id="calc-emi">₹6,667 / month</span>
+            </div>
+
+            <div class="cibil-boost-pill">
+              <i class="fa-solid fa-chart-line" style="color: #10B981;"></i>
+              <span>CIBIL Score Projection: <strong id="cibil-projection">+65 Points Rebound (Target: 755)</strong></span>
+            </div>
+          </div>
+
+          <!-- Lock Plan CTA Button -->
+          <button class="btn-lock-plan" id="lock-plan-btn">
+            <i class="fa-solid fa-lock"></i> Lock This Repayment Plan
+          </button>
+        </div>
+
+        <!-- Borrower Rights & Legal Protections Card (#borrower-rights-card) -->
+        <div class="rights-card" id="borrower-rights-card">
+          <div class="rights-card-header">
+            <h3><i class="fa-solid fa-scale-balanced"></i> Borrower Rights & Legal Transparency</h3>
+          </div>
+
+          <!-- Tabs -->
+          <div class="rights-tabs-nav">
+            <button class="tab-btn active" data-tab="rbi-code">RBI Fair Practice</button>
+            <button class="tab-btn" data-tab="harassment">Zero Harassment</button>
+            <button class="tab-btn" data-tab="cibil-info">CIBIL Restoration</button>
+            <button class="tab-btn" data-tab="fldg-laws">FLDG & Legal</button>
+          </div>
+
+          <!-- Tab Panels -->
+          <div class="tab-panel active" id="tab-rbi-code">
+            <ul class="rights-list">
+              <li><i class="fa-solid fa-circle-check"></i> <strong>Respectful Communication:</strong> Calls strictly allowed only between 8:00 AM – 7:00 PM. No non-business hours contact.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>Right to Hardship Restructuring:</strong> Under RBI guidelines, temporary loss of employment mandates restructured tenure without penalty.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>Written Settlement Notice:</strong> Every agreed EMI plan receives a digitally signed NOC from HDFC Bank.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" id="tab-harassment">
+            <ul class="rights-list">
+              <li><i class="fa-solid fa-shield-halved"></i> <strong>Strict Zero-Harassment Guarantee:</strong> Resolve AI operates via autonomous ethical agents. Third-party recovery harassment is strictly prohibited.</li>
+              <li><i class="fa-solid fa-shield-halved"></i> <strong>Privacy Protection:</strong> No contact with family, workplace colleagues, or social connections under any circumstances.</li>
+              <li><i class="fa-solid fa-shield-halved"></i> <strong>Instant Escalation:</strong> One-click escalation to HDFC Principal Nodal Officer if any discrepancy occurs.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" id="tab-cibil-info">
+            <ul class="rights-list">
+              <li><i class="fa-solid fa-chart-line"></i> <strong>Automated Bureau Reporting:</strong> Upon completion of your EMI plan, HDFC Bank updates CIBIL, Experian & Equifax within 30 days.</li>
+              <li><i class="fa-solid fa-chart-line"></i> <strong>Status Upgrade:</strong> Loan status transitions from 'Overdue' to 'Closed - Settled Satisfactory'.</li>
+              <li><i class="fa-solid fa-chart-line"></i> <strong>Credit Rebound:</strong> Typical score recovery ranges between +45 to +80 points over 6 months.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" id="tab-fldg-laws">
+            <ul class="rights-list">
+              <li><i class="fa-solid fa-gavel"></i> <strong>FLDG Compliance:</strong> 100% adherence to Reserve Bank of India First Loss Default Guarantee circular dated June 2023.</li>
+              <li><i class="fa-solid fa-gavel"></i> <strong>SARFAESI Protections:</strong> Complete transparency with mandatory 30-day resolution window prior to any legal escalation.</li>
+              <li><i class="fa-solid fa-gavel"></i> <strong>Digital Signature Authenticity:</strong> All generated NOC documents feature SHA-256 digital seals.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       5. Settlement Agreement & Digital NOC Confirmation Modal (#settlement-modal / #payment-modal)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="settlement-modal">
+    <div class="modal-dialog">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-file-signature"></i> Formal Repayment Agreement & NOC Locking</h3>
+        <button class="modal-close-btn" id="modal-close-x"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        
+        <!-- Step 1: Term Breakdown View -->
+        <div id="modal-step-terms">
+          <p style="font-size: 0.92rem; margin-bottom: 16px; color: var(--text-body);">
+            Please review the binding settlement terms negotiated between <strong>Rajesh Sharma</strong> and <strong>HDFC Bank</strong> via Resolve AI:
+          </p>
+
+          <div class="lock-preview-summary">
+            <div class="preview-grid">
+              <div class="preview-item">
+                <label>Borrower Name</label>
+                <div class="val">Rajesh Sharma</div>
+              </div>
+              <div class="preview-item">
+                <label>Account Number</label>
+                <div class="val">LA-894102</div>
+              </div>
+              <div class="preview-item">
+                <label>Original Total Due</label>
+                <div class="val">₹45,000</div>
+              </div>
+              <div class="preview-item">
+                <label>Hardship Waiver Granted</label>
+                <div class="val green" id="modal-waiver-val">- ₹5,000</div>
+              </div>
+              <div class="preview-item">
+                <label>Agreed Settlement Amount</label>
+                <div class="val" id="modal-agreed-val">₹40,000</div>
+              </div>
+              <div class="preview-item">
+                <label>Repayment Plan</label>
+                <div class="val" id="modal-tenure-val">6 EMIs @ ₹6,667 / mo</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Seal Preview Box -->
+          <div class="seal-stamp-box">
+            <div class="seal-icon">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div class="seal-text">
+              <h4>Verified Legally Binding Instrument</h4>
+              <p>Under RBI Digital Lending Framework 2023. Digital Seal #NOC-VERIFIED-HDFC-894102</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Post Confirmation Digital NOC View (Hidden until user clicks Accept) -->
+        <div id="modal-step-noc" style="display: none;">
+          <div class="noc-certificate-box" id="noc-certificate-print-area">
+            <div class="noc-header">
+              <div class="noc-title"><i class="fa-solid fa-shield"></i> NO DUES CERTIFICATE (NOC)</div>
+              <div class="noc-serial">REF: NOC-2026-HDFC-894102</div>
+            </div>
+
+            <div class="noc-body-text">
+              This is to formally certify that the Personal Loan Account <strong>#LA-894102</strong> held by <strong>Mr. Rajesh Sharma</strong> with <strong>HDFC Bank Ltd.</strong> has been restructured and settled under the Resolve AI Ethical Hardship Protocol.
+              <br><br>
+              Agreed Settlement Amount: <strong id="noc-amount-text">₹40,000</strong> payable in <strong id="noc-tenure-text">6 monthly EMIs</strong>. Upon timely payment of agreed EMIs, all legal claims are fully discharged and CIBIL status will be updated to <em>"Closed - Satisfied"</em>.
+            </div>
+
+            <div class="noc-stamps-row">
+              <div style="text-align: left;">
+                <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Authorized Signatory</span>
+                <span class="digital-sign">Resolve AI & HDFC Recovery Desk</span>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Digital Seal SHA-256</span>
+                <span style="font-family: monospace; font-size: 0.75rem; color: var(--accent-teal);">9a8f7e6d5c4b3a21</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Actions -->
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modal-cancel-btn">Modify Terms</button>
+        <button class="btn-primary" id="confirm-agreement-btn">
+          <i class="fa-solid fa-file-contract"></i> Confirm & Lock Repayment Plan
+        </button>
+        <button class="btn-primary" id="download-noc-btn" style="display: none; background: var(--accent-teal);">
+          <i class="fa-solid fa-download"></i> Download Official Signed NOC (PDF)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Import -->
+  <script src="borrower.js"></script>
+</body>
+</html>

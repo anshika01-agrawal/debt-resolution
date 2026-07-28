@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resolve AI — Bank Master Control & Recovery Dashboard</title>
+  <meta name="description" content="Master Control Panel for Banks & NBFCs to manage multi-agent autonomous debt resolution pipelines, monitor live streams, and trigger human interventions.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- FontAwesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="app-shell">
+    
+    <!-- ==========================================================================
+         1. Dark Hybrid Sidebar Navigation
+         ========================================================================== -->
+    <aside class="dash-sidebar" id="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <a href="index.html" class="sidebar-brand">
+            <div class="brand-icon-box">R</div>
+            <span class="brand-text">Resolve <span style="color: var(--primary-light);">AI</span></span>
+          </a>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Toggle Sidebar">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section-label">Main Console</div>
+          <ul class="nav-menu">
+            <li>
+              <a href="#overview" class="nav-item-link active" data-view="overview">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span class="nav-item-text">Overview</span>
+              </a>
+            </li>
+            <li>
+              <a href="#master-control-section" class="nav-item-link" data-view="master-control">
+                <i class="fa-solid fa-brain"></i>
+                <span class="nav-item-text">Master Agent Control</span>
+                <span class="nav-badge">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="#borrower-table-section" class="nav-item-link" data-view="borrower-list">
+                <i class="fa-solid fa-users"></i>
+                <span class="nav-item-text">Borrower Portfolio</span>
+                <span class="nav-badge">1,420</span>
+              </a>
+            </li>
+            <li>
+              <a href="#live-activity-feed" class="nav-item-link" data-view="live-feed">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="nav-item-text">Live Activity Feed</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="nav-section-label">Management</div>
+          <ul class="nav-menu">
+            <li>
+              <a href="#analytics" class="nav-item-link" data-view="analytics">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="nav-item-text">Recovery Analytics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item-link" id="btn-open-upload-nav">
+                <i class="fa-solid fa-file-excel"></i>
+                <span class="nav-item-text">File Batch Upload</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item-link" id="btn-settings-toast">
+                <i class="fa-solid fa-sliders"></i>
+                <span class="nav-item-text">System Rules & Guardrails</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card">
+          <div class="user-avatar">HDFC</div>
+          <div class="user-info">
+            <div class="user-name">HDFC Bank Debt Ops</div>
+            <div class="user-role">Master Risk Admin</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         2. Main Dashboard Content Area
+         ========================================================================== -->
+    <main class="dash-main">
+
+      <!-- Header Top Bar -->
+      <header class="dash-header">
+        <div class="header-left">
+          <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+            <a href="#">Bank Dashboard</a>
+            <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="breadcrumb-current">Master Agent Control</span>
+          </div>
+
+          <!-- Master Agent Live Status Indicator Badge -->
+          <div class="master-status-wrapper">
+            <div class="master-status-badge" id="master-status-badge">
+              <span class="pulse-dot"></span>
+              <span>Master Agent: ACTIVE & HEALTHY (99.8%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Live Global Search -->
+          <div class="dash-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="dash-search-input" id="global-search-input" placeholder="Search Loan ID, Name, PAN...">
+          </div>
+
+          <!-- Action Buttons -->
+          <button class="dash-btn dash-btn-outline" id="btn-export-report">
+            <i class="fa-solid fa-download"></i> Export Report
+          </button>
+          <button class="dash-btn dash-btn-primary" id="btn-open-upload-header">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Upload Portfolio
+          </button>
+
+          <!-- Notification Icon Bell -->
+          <button class="dash-icon-btn" id="btn-notifications" title="System Alerts">
+            <i class="fa-regular fa-bell"></i>
+            <span class="icon-badge-count">3</span>
+          </button>
+
+          <!-- Navigation to Borrower Portal for Demo -->
+          <a href="borrower.html" class="dash-btn dash-btn-outline" title="Switch to Borrower Portal View" style="border-color: var(--primary-light); color: var(--primary);">
+            <i class="fa-solid fa-user-shield"></i> Borrower Portal
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Content Container -->
+      <div class="dash-content">
+
+        <!-- 1. Metrics Summary Cards Grid -->
+        <section class="metrics-grid">
+          <!-- Card 1: Total Portfolio -->
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-icon-box metric-icon-purple">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+              </div>
+              <span class="metric-trend-pill trend-up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +12.4%
+              </span>
+            </div>
+            <div class="metric-label">Total Portfolio Under Recovery</div>
+            <div class="metric-value" id="metric-total-portfolio">₹14.8 Cr</div>
+            <div class="metric-footnote">Across 1,420 Active Accounts</div>
+          </div>
+
+          <!-- Card 2: Active Borrowers -->
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-icon-box metric-icon-blue">
+                <i class="fa-solid fa-user-group"></i>
+              </div>
+              <span class="metric-trend-pill trend-up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +8.2%
+              </span>
+            </div>
+            <div class="metric-label">Active Borrowers Engaged</div>
+            <div class="metric-value" id="metric-active-borrowers">1,420</div>
+            <div class="metric-footnote">Multi-Agent Outreach Active</div>
+          </div>
+
+          <!-- Card 3: Resolution Rate -->
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-icon-box metric-icon-green">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <span class="metric-trend-pill trend-up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +15.1%
+              </span>
+            </div>
+            <div class="metric-label">Autonomous Resolution Rate</div>
+            <div class="metric-value" id="metric-resolution-rate">88.5%</div>
+            <div class="metric-footnote">8.5x Higher than Legacy Callers</div>
+          </div>
+
+          <!-- Card 4: Human Escalations -->
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-icon-box metric-icon-orange">
+                <i class="fa-solid fa-shield-cat"></i>
+              </div>
+              <span class="metric-trend-pill trend-down">
+                <i class="fa-solid fa-arrow-trend-down"></i> -2.4%
+              </span>
+            </div>
+            <div class="metric-label">Human Escalation Rate</div>
+            <div class="metric-value" id="metric-escalation-rate">4.2%</div>
+            <div class="metric-footnote">60 Cases Flagged for Officer Oversight</div>
+          </div>
+        </section>
+
+
+        <!-- 2. Master Agent Control Section (`#master-control-section`) -->
+        <section class="master-control-container" id="master-control-section">
+          <div class="master-control-header">
+            <div class="master-status-title-group">
+              <div class="master-avatar-glow">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <h2 class="section-title">Master Agent Orchestration Panel</h2>
+                <p class="section-subtitle">Real-time status, workload allocation, and dynamic tone alignment for all 4 sub-agents.</p>
+              </div>
+            </div>
+
+            <button class="dash-btn dash-btn-outline" id="btn-rebalance-workload">
+              <i class="fa-solid fa-rotate"></i> Rebalance AI Workload
+            </button>
+          </div>
+
+          <!-- Sub-Agent 4 Cards Grid -->
+          <div class="subagents-grid">
+            <!-- Agent 1: Tone & Multilingual Chat Specialist -->
+            <div class="subagent-card" id="agent-card-1">
+              <div>
+                <div class="subagent-card-header">
+                  <div class="subagent-meta">
+                    <div class="subagent-icon-box agent-icon-1">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                      <div class="subagent-title">Agent 1: Chat</div>
+                      <div class="subagent-subtitle">WhatsApp & Web AI</div>
+                    </div>
+                  </div>
+                  <span class="subagent-status-tag status-active" id="agent-status-badge-1">ACTIVE</span>
+                </div>
+
+                <div class="workload-group">
+                  <div class="workload-label-flex">
+                    <span>Active Workload</span>
+                    <span id="agent-workload-text-1">680 Cases (48%)</span>
+                  </div>
+                  <div class="workload-bar-bg">
+                    <div class="workload-bar-fill fill-green" id="agent-workload-bar-1" style="width: 48%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subagent-actions">
+                <button class="btn-subagent-action" onclick="adjustAgentTone(1)" title="Adjust Empathy & Tone">
+                  <i class="fa-solid fa-sliders"></i> Tone
+                </button>
+                <button class="btn-subagent-action btn-pause-action" onclick="togglePauseAgent(1)" id="btn-pause-1">
+                  <i class="fa-solid fa-pause"></i> Pause
+                </button>
+              </div>
+            </div>
+
+            <!-- Agent 2: Empathetic Voice & Call Coordinator -->
+            <div class="subagent-card" id="agent-card-2">
+              <div>
+                <div class="subagent-card-header">
+                  <div class="subagent-meta">
+                    <div class="subagent-icon-box agent-icon-2">
+                      <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div>
+                      <div class="subagent-title">Agent 2: Voice</div>
+                      <div class="subagent-subtitle">Voice Bot & IVR</div>
+                    </div>
+                  </div>
+                  <span class="subagent-status-tag status-active" id="agent-status-badge-2">ACTIVE</span>
+                </div>
+
+                <div class="workload-group">
+                  <div class="workload-label-flex">
+                    <span>Active Workload</span>
+                    <span id="agent-workload-text-2">420 Cases (30%)</span>
+                  </div>
+                  <div class="workload-bar-bg">
+                    <div class="workload-bar-fill fill-blue" id="agent-workload-bar-2" style="width: 30%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subagent-actions">
+                <button class="btn-subagent-action" onclick="triggerForceCallBatch()" title="Force Immediate Call Queue">
+                  <i class="fa-solid fa-phone-arrow-up-right"></i> Force Call
+                </button>
+                <button class="btn-subagent-action btn-pause-action" onclick="togglePauseAgent(2)" id="btn-pause-2">
+                  <i class="fa-solid fa-pause"></i> Pause
+                </button>
+              </div>
+            </div>
+
+            <!-- Agent 3: Ethical Legal & Notice Engine -->
+            <div class="subagent-card" id="agent-card-3">
+              <div>
+                <div class="subagent-card-header">
+                  <div class="subagent-meta">
+                    <div class="subagent-icon-box agent-icon-3">
+                      <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div>
+                      <div class="subagent-title">Agent 3: Legal</div>
+                      <div class="subagent-subtitle">Notice & Compliance</div>
+                    </div>
+                  </div>
+                  <span class="subagent-status-tag status-active" id="agent-status-badge-3">ACTIVE</span>
+                </div>
+
+                <div class="workload-group">
+                  <div class="workload-label-flex">
+                    <span>Active Workload</span>
+                    <span id="agent-workload-text-3">180 Cases (13%)</span>
+                  </div>
+                  <div class="workload-bar-bg">
+                    <div class="workload-bar-fill fill-purple" id="agent-workload-bar-3" style="width: 13%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subagent-actions">
+                <button class="btn-subagent-action" onclick="triggerLegalDraftBatch()" title="Generate Compliance Drafts">
+                  <i class="fa-solid fa-file-contract"></i> Drafts
+                </button>
+                <button class="btn-subagent-action btn-pause-action" onclick="togglePauseAgent(3)" id="btn-pause-3">
+                  <i class="fa-solid fa-pause"></i> Pause
+                </button>
+              </div>
+            </div>
+
+            <!-- Agent 4: Human Handover & Risk Supervisor -->
+            <div class="subagent-card" id="agent-card-4">
+              <div>
+                <div class="subagent-card-header">
+                  <div class="subagent-meta">
+                    <div class="subagent-icon-box agent-icon-4">
+                      <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                      <div class="subagent-title">Agent 4: Supervisor</div>
+                      <div class="subagent-subtitle">Risk & Handover</div>
+                    </div>
+                  </div>
+                  <span class="subagent-status-tag status-active" id="agent-status-badge-4">MONITORING</span>
+                </div>
+
+                <div class="workload-group">
+                  <div class="workload-label-flex">
+                    <span>Escalated Queue</span>
+                    <span id="agent-workload-text-4">60 Cases (9%)</span>
+                  </div>
+                  <div class="workload-bar-bg">
+                    <div class="workload-bar-fill fill-orange" id="agent-workload-bar-4" style="width: 9%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subagent-actions">
+                <button class="btn-subagent-action" onclick="reviewPendingEscalations()" title="Review Flagged Cases">
+                  <i class="fa-solid fa-clipboard-check"></i> Review
+                </button>
+                <button class="btn-subagent-action btn-pause-action" onclick="togglePauseAgent(4)" id="btn-pause-4">
+                  <i class="fa-solid fa-pause"></i> Pause
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Master Agent System Log Ticker -->
+          <div class="master-log-box">
+            <div class="log-prefix-label">
+              <i class="fa-solid fa-terminal"></i> MASTER TICKER:
+            </div>
+            <div class="log-ticker-content" id="master-log-ticker">
+              [23:44:10] Master Agent allocated LOAN-IN-8842 to Agent 1 Chat | Sentiment: Cooperative | Recommended Action: EMI Restructure (3-part)
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 3. Mid Grid: Live Activity Feed Stream + Channel Analytics -->
+        <section class="dash-mid-grid">
+          
+          <!-- Live Activity Feed Container (`#live-activity-feed`) -->
+          <div class="activity-feed-card" id="live-activity-feed">
+            <div class="activity-feed-header">
+              <div>
+                <h3 class="section-title" style="font-size: 1.1rem;">
+                  <i class="fa-solid fa-tower-cell" style="color: var(--success);"></i> Live Activity Feed
+                </h3>
+                <p class="section-subtitle">Real-time automated events emitted across channel agents.</p>
+              </div>
+
+              <div class="feed-filter-pills">
+                <button class="feed-pill active" onclick="filterActivityFeed('all')">All</button>
+                <button class="feed-pill" onclick="filterActivityFeed('whatsapp')">WhatsApp</button>
+                <button class="feed-pill" onclick="filterActivityFeed('call')">Calls</button>
+                <button class="feed-pill" onclick="filterActivityFeed('legal')">Legal</button>
+              </div>
+            </div>
+
+            <!-- Dynamic Scrolling List -->
+            <div class="activity-stream-list" id="activity-stream-list">
+              <!-- Initial feed items injected by JS -->
+            </div>
+          </div>
+
+          <!-- Recovery Channel Performance & Analytics -->
+          <div class="analytics-card">
+            <div class="section-header-flex" style="margin-bottom: 8px;">
+              <div>
+                <h3 class="section-title" style="font-size: 1.1rem;">
+                  <i class="fa-solid fa-chart-pie" style="color: var(--primary);"></i> Channel Recovery Yield
+                </h3>
+                <p class="section-subtitle">Percentage of total debt recovered per sub-agent channel.</p>
+              </div>
+              <span class="dpd-pill" style="background: var(--primary-glow); color: var(--primary); font-weight: 700;">This Month</span>
+            </div>
+
+            <div class="analytics-chart-placeholder">
+              <div class="chart-bars-wrapper">
+                <div class="chart-bar-item">
+                  <div class="bar-column bar-whatsapp" style="height: 78%;" data-value="48%"></div>
+                  <span class="bar-label">WhatsApp</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="bar-column bar-call" style="height: 60%;" data-value="30%"></div>
+                  <span class="bar-label">Voice Bot</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="bar-column bar-legal" style="height: 35%;" data-value="13%"></div>
+                  <span class="bar-label">Legal</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="bar-column bar-human" style="height: 25%;" data-value="9%"></div>
+                  <span class="bar-label">Human</span>
+                </div>
+              </div>
+
+              <div class="analytics-legend">
+                <div class="legend-item"><span class="legend-dot" style="background: #25D366;"></span> WhatsApp (48%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #3B82F6;"></span> Voice Bot (30%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #8B5CF6;"></span> Legal Notice (13%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #F97316;"></span> Human Ops (9%)</div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- 4. Borrower Table Section (`#borrower-table-section`) -->
+        <section class="borrower-section" id="borrower-table-section">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="section-title">Borrower Resolution Management</h2>
+              <p class="section-subtitle">Manage defaulter accounts, view live AI interaction audit trails, or trigger human intervention.</p>
+            </div>
+
+            <!-- Stage Filter Tabs -->
+            <div class="filter-tabs" id="stage-filter-tabs">
+              <button class="tab-btn active" data-filter="all">All <span class="tab-count" id="count-all">12</span></button>
+              <button class="tab-btn" data-filter="chat">Chat <span class="tab-count" id="count-chat">4</span></button>
+              <button class="tab-btn" data-filter="call">Call <span class="tab-count" id="count-call">2</span></button>
+              <button class="tab-btn" data-filter="legal">Legal <span class="tab-count" id="count-legal">2</span></button>
+              <button class="tab-btn" data-filter="escalated">Escalated <span class="tab-count" id="count-escalated">2</span></button>
+              <button class="tab-btn" data-filter="resolved">Resolved <span class="tab-count" id="count-resolved">2</span></button>
+            </div>
+          </div>
+
+          <!-- Table Wrapper -->
+          <div class="table-responsive">
+            <table class="dash-table" id="borrowers-table">
+              <thead>
+                <tr>
+                  <th>Borrower Name & ID</th>
+                  <th>Loan Details</th>
+                  <th>Overdue Amount</th>
+                  <th>DPD</th>
+                  <th>Current Stage</th>
+                  <th>Risk Score</th>
+                  <th>Last AI Activity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="borrowers-tbody">
+                <!-- Records injected dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Pagination Footer -->
+          <div class="table-pagination">
+            <div id="pagination-info">Showing 1 to 12 of 12 records</div>
+            <div class="pagination-controls">
+              <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn" disabled><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+
+  <!-- ==========================================================================
+       5. Borrower Audit Detail Modal (`#borrower-modal`)
+       ========================================================================== -->
+  <div class="modal-overlay" id="borrower-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="borrower-avatar-initials" id="modal-borrower-avatar" style="width: 44px; height: 44px; background: var(--primary-glow); color: var(--primary);">RS</div>
+          <div>
+            <h3 class="section-title" id="modal-borrower-name" style="font-size: 1.15rem;">Rajesh Sharma</h3>
+            <span class="section-subtitle" id="modal-borrower-sub">Loan ID: LOAN-IN-8842 | Personal Loan</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeBorrowerModal()" title="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="audit-grid">
+          
+          <!-- Left Column: Borrower Profile & Risk Summary -->
+          <div class="audit-left-col">
+            <div class="borrower-summary-box">
+              <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: var(--text-heading);">Account Overview</h4>
+              
+              <div class="summary-data-row">
+                <span>Outstanding Debt</span>
+                <span id="modal-outstanding" style="color: var(--primary); font-weight: 700;">₹85,000</span>
+              </div>
+              <div class="summary-data-row">
+                <span>Days Past Due (DPD)</span>
+                <span id="modal-dpd">45 Days</span>
+              </div>
+              <div class="summary-data-row">
+                <span>Current Stage</span>
+                <span id="modal-stage-pill" class="status-pill pill-chat">Agent 1: Chat</span>
+              </div>
+              <div class="summary-data-row">
+                <span>Payment Propensity</span>
+                <span id="modal-propensity" style="color: var(--success);">High (84%)</span>
+              </div>
+              <div class="summary-data-row">
+                <span>Assigned Agent</span>
+                <span id="modal-agent">WhatsApp Bot AI</span>
+              </div>
+            </div>
+
+            <!-- Risk Meter Box -->
+            <div class="risk-meter-box">
+              <div class="meter-header">
+                <span>AI Risk Assessment Score</span>
+                <strong id="modal-risk-score-text" style="color: #F59E0B;">32/100 (Low Risk)</strong>
+              </div>
+              <div class="meter-track">
+                <div class="meter-fill" id="modal-risk-meter-fill" style="width: 32%;"></div>
+              </div>
+              <p style="font-size: 0.75rem; color: #A4A1C6; margin: 0;">
+                Empathetic resolution highly recommended. Borrower shows strong intent to settle under 3-part EMI.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Multi-Channel Transcript Timeline -->
+          <div>
+            <h4 style="font-size: 0.95rem; margin-bottom: 14px; color: var(--text-heading); display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i> AI Multi-Channel Audit Timeline
+            </h4>
+
+            <div class="timeline-box" id="modal-timeline-box">
+              <!-- Timeline items populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Human Intervention Footer Actions -->
+      <div class="modal-footer-actions">
+        <button class="dash-btn dash-btn-outline" onclick="triggerHumanAction('pause')" style="color: var(--text-body);">
+          <i class="fa-solid fa-pause"></i> Pause AI (7 Days)
+        </button>
+        <button class="dash-btn dash-btn-outline" onclick="triggerHumanAction('legal')" style="color: var(--purple-accent); border-color: var(--purple-accent);">
+          <i class="fa-solid fa-file-shield"></i> Issue Custom Legal Notice
+        </button>
+        <button class="dash-btn dash-btn-outline" onclick="triggerHumanAction('field')" style="color: var(--warning); border-color: var(--warning);">
+          <i class="fa-solid fa-truck-fast"></i> Escalate to Field Team
+        </button>
+        <button class="dash-btn dash-btn-primary" onclick="triggerHumanAction('waiver')" style="background: linear-gradient(135deg, #10B981, #059669);">
+          <i class="fa-solid fa-circle-check"></i> Authorize 15% Waiver
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       6. Defaulter Batch Upload Modal (`#dashboard-upload-modal` & `#upload-modal`)
+       ========================================================================== -->
+  <div class="modal-overlay" id="dashboard-upload-modal">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="brand-icon-box" style="width: 38px; height: 38px; font-size: 1rem;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+          <div>
+            <h3 class="section-title" style="font-size: 1.1rem;">Defaulter Portfolio Batch Upload</h3>
+            <span class="section-subtitle">Upload Excel (.xlsx), CSV, or JSON file to deploy AI recovery pipelines.</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeUploadModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="dropzone-box" id="dropzone">
+          <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+          <h4 style="font-size: 1rem; color: var(--text-heading); margin-bottom: 6px;">Drag & Drop Defaulter File Here</h4>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 16px;">Supports .xlsx, .csv, and .json files up to 50MB</p>
+          <input type="file" id="file-upload-input" accept=".csv, .xlsx, .json" style="display: none;">
+          <button class="dash-btn dash-btn-outline" onclick="document.getElementById('file-upload-input').click()">
+            <i class="fa-solid fa-folder-open"></i> Browse File
+          </button>
+        </div>
+
+        <!-- File Preview Status (Hidden by default) -->
+        <div id="upload-file-status" style="display: none; margin-top: 18px; padding: 14px; background: var(--bg-main); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-file-excel" style="color: var(--success); font-size: 1.4rem;"></i>
+              <div>
+                <strong id="upload-filename" style="font-size: 0.88rem; color: var(--text-heading);">HDFC_NPA_Batch_Q3.xlsx</strong>
+                <div id="upload-filesize" style="font-size: 0.75rem; color: var(--text-muted);">2.4 MB • 450 Accounts Parsed</div>
+              </div>
+            </div>
+            <span class="dpd-pill dpd-warning">Ready for Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <button class="dash-btn dash-btn-outline" onclick="closeUploadModal()">Cancel</button>
+        <button class="dash-btn dash-btn-primary" id="btn-submit-batch" disabled onclick="executeBatchUpload()">
+          <i class="fa-solid fa-rocket"></i> Deploy Master Agent Pipeline
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Floating Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="dashboard.js"></script>
+</body>
+</html>
