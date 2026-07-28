@@ -852,6 +852,216 @@ img, svg {
 }
 
 /* ==========================================================================
+   5. Autonomous Multi-Agent Operating System Flow (8-Step Architecture)
+   ========================================================================== */
+
+.os-flow-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.os-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 20px;
+  position: relative;
+}
+
+.os-step-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 26px 20px 22px 20px;
+  border: 1px solid rgba(225, 205, 240, 0.85);
+  box-shadow: 0 10px 28px rgba(59, 21, 120, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+
+.os-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(59, 21, 120, 0.12);
+  border-color: var(--primary-light);
+}
+
+.os-step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.step-green     { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+.step-teal      { background: linear-gradient(135deg, #0D9488 0%, #0891B2 100%); }
+.step-blue      { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
+.step-purple    { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+.step-pink      { background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%); }
+.step-coral     { background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); }
+.step-amber     { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+.step-green-alt { background: linear-gradient(135deg, #10B981 0%, #047857 100%); }
+
+.os-step-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.os-step-desc {
+  font-size: 0.8rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.os-arrow {
+  position: absolute;
+  font-size: 1.3rem;
+  color: var(--primary);
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-right {
+  right: -16px;
+  top: 36px;
+  z-index: 5;
+}
+
+.arrow-down {
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.arrow-left {
+  left: -16px;
+  top: 36px;
+  z-index: 5;
+}
+
+/* Grid Order for Bottom Row (Steps 5 to 8 reversed) */
+.grid-pos-5 { grid-column: 4; grid-row: 2; }
+.grid-pos-6 { grid-column: 3; grid-row: 2; }
+.grid-pos-7 { grid-column: 2; grid-row: 2; }
+.grid-pos-8 { grid-column: 1; grid-row: 2; }
+
+.os-flow-banner {
+  background: rgba(59, 21, 120, 0.05);
+  border: 1px solid rgba(59, 21, 120, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  max-width: 780px;
+  margin: 35px auto 0 auto;
+  box-shadow: 0 4px 20px rgba(59, 21, 120, 0.04);
+}
+
+/* Multilingual 3 Cards Grid (Riverline Style) */
+.multilingual-3cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.riverline-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 34px 28px;
+  border: 1px solid rgba(225, 205, 240, 0.85);
+  box-shadow: 0 10px 30px rgba(59, 21, 120, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.riverline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(59, 21, 120, 0.1);
+}
+
+.riverline-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.riverline-desc {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.mini-audio-player {
+  background: #F7EFF8;
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.mini-play-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #FFFFFF;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mini-bar-wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+
+.mini-bar-wave span {
+  width: 3px;
+  height: 14px;
+  background: var(--primary-light);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.mini-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
    5. Agent Architecture Flowchart Section
    ========================================================================== */
 
